@@ -1,0 +1,70 @@
+ <div id="modal1" class="modal modal-fixed-footer">
+  <% @product = Product.new %>
+  <%= form_for( @product, html: { multipart: true } ) do |f| %>
+    <div class="modal-content">
+      <h4 class="center-align">Enter Product Information</h4>
+
+      <div class="field">
+        <%= f.label :name, "Product Name" %><br>
+        <%= f.text_field :name, { required: true, placeholder: "E.g. Television" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :description, "Product Description" %><br>
+        <%= f.text_area :description, { required: true, length: 100, maxlength: 200, placeholder: "E.g. Entertains Viewers", class: "materialize-textarea" }  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :quantity, "Product Quantity" %><br>
+        <%= f.text_field :quantity, { required: true, placeholder: "E.g. 10" }  %>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :brand, "Product Brand" %><br>
+        <%= f.text_field :brand, { required: true, placeholder: "E.g. Toshiba" } %>
+      </div>
+
+      <div class="row">
+        <div class="field col s6">
+          <%= f.label :size, "Product Size" %><br>
+          <%= f.text_field :size, { required: true, placeholder: "E.g. 10 inches" } %>
+        </div>
+
+
+        <div class="input-field col s6 units">
+          <select>
+            <option value="" disabled selected>Choose Unit</option>
+            <option value="1">Centimetres (cm)</option>
+            <option value="2">Metres (m)</option>
+            <option value="3">Inches (in)</option>
+            <option value="3">Yards (yd)</option>
+            <option value="3">Feet (ft)</option>
+          </select>
+          
+        </div>
+
+      </div>
+
+      <div class="field">
+        <%= f.label :price, "Product Price" %> <span>(&#8358;)</span> <br>
+        <%= f.text_field :price, { required: true, placeholder: "E.g. 100" } %>
+      </div>
+
+
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Upload Image</span>
+          <%= f.file_field :image, { required: true } %>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Click to select product image">
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <%= f.submit class: "btn-flat", id: "create_product" %>
+    </div>
+  <% end %>
+</div>

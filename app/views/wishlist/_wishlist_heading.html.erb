@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col l8">
+    <span>Product</span>
+  </div>
+  <div class="col l2">
+    <span>Added</span>
+  </div>
+  <span class="col l1">Price</span>
+  <span class="col center l1">Remove</span>
+</div>
+<%= render partial: "wishlist_product",
+             collection: @wishproducts, as: :wishproduct %>

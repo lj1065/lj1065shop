@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= metamagic %>
+
+  <title>Getmyshop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+
+  <div class="row dashboard-header">
+    <div class="col s1" id="view-headline-cont">
+      <nav class="white-text nav-wrapper-cont">
+        <div class="nav-wrapper">
+          <a href="#" class="center-align" id="hdline">
+            <i class="material-icons">view_headline</i>
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="col s11 header-nav-cont">
+      <nav class="white-text header-nav">
+        <div class="nav-wrapper das">
+          <span class="dashboard-page-title">Dashboard</span>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="dashboard-welcome-user">
+              Welcome, <%= current_shop_owner.first_name %>
+            </li>
+            <li>
+              <%= link_to shop_owner_logout_path, method: :delete do %>
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i> 
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="content-container">
+      <div class="col s1 side-bar-cont">
+        <nav class="teal white-text side-bar-nav">
+          <div class="nav-wrapper">
+            <a class="center-align">
+              &nbsp;
+            </a>
+          </div>
+        </nav>
+        <div class="side-bar-menu-cont">
+          <div class="center-align">
+            <div class="side-bar-menu">
+              <a href="<%= dashboard_path %>" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">dashboard</i>
+                </span>
+                <span class="side-bar-menu-text">Dashboard</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="#" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">supervisor_account</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Customers</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="<%= shop_products_path %>" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">turned_in_not</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Products</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="/shopowners/admin/shop/orders" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">shop</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Orders</span>
+              </a>
+            </div>
+            
+            <div class="side-bar-menu">
+              <a href="#" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">redeem</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Coupon</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="<%= current_shop_owner.shop.url %>" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">visibility</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Preview</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="<%= edit_shop_path(@shop) %>" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">settings</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Settings</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu live-help">
+              <a href="#" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">live_help</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Help?</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-area col s10 offset-s1" style="">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

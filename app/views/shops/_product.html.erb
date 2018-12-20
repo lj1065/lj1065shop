@@ -1,0 +1,71 @@
+<% if products.any? %>
+
+  <div class="row">
+    <h3 class="center-align edit-form-heading">Shop Products (<%= products.count %>)</h3>
+    <div class="input-field col s4 offset-s8 product-search">
+      <i class="material-icons prefix">search</i>
+      <input id="icon-prefix" type="text" class="validate">
+      <label for="icon-prefix">Search Products...</label>
+    </div>
+  </div>
+
+  
+
+  <div class="row">
+    <% products.each do |product| %>
+      <div class="col s4 m3 l3 hspace" id='<%= "product#{product.id}" %>'>
+        <div class="card products-card hoverable" id="products-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag product.image.preview.url, class: "activator"%>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= product.name %> <a class="btn-floating"><i class="material-icons">visibility</i></a></span>
+            <p><h5><span>&#8358;</span><%= product.price %></h5> <span class="text-darken-3 grey-text">for <%= product.size %> inches</span></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= product.name %><i class="material-icons right">close</i></span>
+            <div class="reveal-content">
+              <blockquote>
+                <%= product.description %>
+              </blockquote>
+              <div class="section">
+                <span class="text-darken-7">Price:</span>
+                <h6><span>&#8358;</span><%= product.price%></h6>
+              </div>
+              <div class="section">
+                <span class="text-darken-7">Size:</span>
+                <h6><%= product.size %> inches</h6>
+              </div>
+              
+              <div class="section">
+                <span class="text-darken-7">Brand:</span>
+                <h6><%= product.brand %></h6>
+              </div>
+              
+            </div>
+           <div class="card-action">
+             <a class="waves-effect waves-light btn left" href="<%= edit_shop_product_path(product) %>">Edit</a>
+             <a class="waves-effect waves-light btn right red" onclick="confirmDeleteProduct('<%= product.id %>')" id="delete_product">Delete</a>
+           </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="container vspacer">
+    <div class="col s9 products-column">
+      <div class="profile">
+        <div class="result-header">
+          NO PRODUCTS IN STORE
+        </div>
+        <div class="row profile-fields">
+          <div class="no-order-msg center">
+            <p>You currently have no products</p>
+            <a class="modal-trigger waves-effect waves-teal btn-flat" href="#modal1">Add Products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
