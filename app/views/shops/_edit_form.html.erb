@@ -2,7 +2,7 @@
 <% if flash['notice'] %>
   <%= javascript_tag do %>
       Materialize.toast("<%= flash['notice'] %>", 4000)
-  <% end %>
+  <% end %> 
 <% end %>
 <% if @shop.errors.any? %>
 <script>
